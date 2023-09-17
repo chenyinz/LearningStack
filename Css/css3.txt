@@ -1,0 +1,245 @@
+mdn网址:https://developer.mozilla.org/zh-CN/ 
+
+border-box 内边距和边框不会增加元素的尺寸
+margin:0 auto;依据屏幕大小自动调整margin左右宽度
+
+控制容器的方向
+felx-direction:row flex-direction:column flex-direction:row-reverse flex-direction:clomns-reverse
+
+控制多个容器 
+总宽度超过屏幕宽度后因如何处理 flex-wrap换行 flex-nowrap不换行
+
+align-content与align-items的区别
+align-content用于多行容器的处理 align-items用于单行flex中各项对齐方式
+align-content:center flex-start flex-end space-around space-between stretch
+align-items:没有space-around space-between 有baseline
+justify-content:没有stretch 但是有space-evenly
+
+`justify-content` 和 `justify-items` 是用于控制 Flexbox 布局中子元素在主轴上的对齐方式的 CSS 属性，它们的作用略有不同。
+
+justify-content应用于flex justify-items应用grid
+
+space-around space-between的区别
+space-around上下或者左右存在一定的间隙
+
+flex-shrink flex-grow 来设置容器是否能够依据宽度进行伸长或者收缩
+
+box-shadow来设置阴影部分 其中border-radius 来设置容器四个角的圆形弧度
+
+display:relative 其创建相对定位的上下文，有一下几个用途（使得可以对容器内的元素进行精确的定位、创建层叠效果、实现动画和过渡效果，以及插入相对于容器定位的伪元素）
+1、定位子元素：通过将子元素的定位属性设置为absolute或fixed,相对定位的容器可以成为子元素的定位参考点。子元素的定位将相对于容器进行计算，而不是
+相对于文档流中的其他元素，也进一步使得将子元素精确地放至在容器的特定位置。
+2、创建层叠效果:通过在相对定义为的容器内使用z-index属性，可以控制子元素的层叠顺序。
+3、动画和过度效果：相对定位的容器可以用于创建动画和过度效果，通过在容器内部的子元素上应用动画或过度属性，可以在相对定位的容器内部实现元素的平移、缩放、旋转等动态效果。
+4、创建相对于容器定位的伪元素：通过在相对定位的容器上使用伪元素选择器::before ::after。这样可以在容器的特定位置插入内容或装饰元素。
+案例说明:
+当将容器的定位属性设置为`relative`时，以下是一些具体的例子：
+
+1. 定位子元素：
+<style>
+  .container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+  }
+  .child {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+</style>
+
+<div class="container">
+  <div class="child"></div>
+</div>
+
+
+2. 创建层叠效果：
+<style>
+  .container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+  .child {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    z-index: 1;
+  }
+  .another-child {
+    position: absolute;
+    top: 75px;
+    left: 75px;
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    z-index: 2;
+  }
+</style>
+
+<div class="container">
+  <div class="child"></div>
+  <div class="another-child"></div>
+</div>
+
+
+3. 动画和过渡效果：
+
+<style>
+  .container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+  .child {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    transition: transform 0.3s ease-in-out;
+  }
+  .container:hover .child {
+    transform: scale(1.2);
+  }
+</style>
+
+<div class="container">
+  <div class="child"></div>
+</div>
+
+2. 创建相对于容器定位的伪元素：
+<style>
+  .container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: lightgray;
+  }
+  .container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+</style>
+
+<div class="container"></div>
+
+overflow指的在容器宽高固定的情况下 内容溢出的处理方式
+
+css中可继承属性和不可继承属性
+可继承属性
+1、字体相关属性
+    font-family：字体系列
+    font-size：字体大小
+    font-style：字体样式
+    font-weight：字体粗细
+2、文本相关属性
+    color：文本颜色
+    line-height：行高
+    text-align：文本对齐方式
+3、盒模型相关属性
+    word-spacing：单词间距
+    letter-spacing：字母间距
+4、列表相关属性
+    list-style-type：列表项标记类型
+    list-style-position：列表项标记位置
+5、表格相关属性：
+    border-collapse：表格边框合并方式
+    caption-side：表格标题位置
+6、其他属性：
+    cursor：光标样式
+    visibility：元素可见性
+
+当父元素应用了某些可继承属性时，子元素可以继承这些属性的值。以下是一些具体的示例：
+
+1. 字体相关属性：
+   <style>
+     .parent {
+       font-family: Arial, sans-serif;
+       font-size: 16px;
+       font-weight: bold;
+     }
+   </style>
+   <div class="parent">
+     This is the parent element.
+     <p>This is the child element.</p>
+   </div>
+
+
+2. 文本相关属性：
+   <style>
+     .parent {
+       color: blue;
+       line-height: 1.5;
+       text-align: center;
+     }
+   </style>
+   <div class="parent">
+     This is the parent element.
+     <p>This is the child element.</p>
+   </div>
+
+3. 盒模型相关属性：
+   <style>
+     .parent {
+       word-spacing: 2px;
+       letter-spacing: 1px;
+     }
+   </style>
+   <div class="parent">
+     This is the parent element.
+     <p>This is the child element.</p>
+   </div>
+4、列表相关属性
+    <style>
+    ul {
+        list-style: square;
+    }
+    </style>
+    <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    </ul>
+
+
+
+不可继承属性
+盒模型相关属性：
+    width：宽度
+    height：高度
+    margin：外边距
+    padding：内边距
+    border：边框
+    定位相关属性：
+
+    position：定位方式
+    top、right、bottom、left：定位偏移值
+    背景相关属性：
+
+    background-color：背景颜色
+    background-image：背景图片
+    文本相关属性：
+
+    text-decoration：文本装饰
+    text-transform：文本转换
+    text-indent：文本缩进
+    盒模型相关属性：
+
+    display：显示方式
+    float：浮动方式
+    overflow：溢出处理方式

@@ -1,0 +1,94 @@
+
+- `<details>`：用于创建一个可展开的详细内容区域。
+- `<summary>`：用于定义 `<details>` 元素的摘要或标题。
+- `<mark>`：用于突出显示文本中的某个部分。
+
+- `<code>`：用于表示计算机代码。
+- `<pre>`：用于表示预格式化的文本，通常用于显示代码块。
+
+- `<blockquote>`：用于表示长引用或嵌套引用的块级内容。
+- `<cite>`：用于引用作品的标题或名称。
+
+- `<kbd>`：用于表示键盘输入。
+- `<var>`：用于表示变量。
+- `<abbr>`：用于表示缩写词或首字母缩写。
+- `<data>`：用于表示数据值。
+<p>New Products:</p>
+<ul>
+  <li><data value="398">Mini Ketchup</data></li>
+  <li><data value="399">Jumbo Ketchup</data></li>
+  <li><data value="400">Mega Jumbo Ketchup</data></li>
+</ul>
+
+- `<ruby>`：用于表示注音或字符的拼音。
+- `<rt>`：用于表示注音或字符的解释。
+- `<bdi>`：用于表示文本的双向隔离，用于处理多语言文本的显示问题。
+
+会更具页面的宽度自动换行
+- `<wbr>`：用于指示在文本中插入一个可选的换行符。 
+
+- `<header>`：用于定义文档或节的页眉。
+- `<nav>`：用于定义导航链接的区域。
+- `<section>`：用于定义文档中的独立部分。
+- `<article>`：用于定义独立的文章内容。
+- `<aside>`：用于定义页面内容之外的内容，如侧边栏、广告等。
+- `<footer>`：用于定义文档或节的页脚。
+- `<main>`：用于定义文档的主要内容。
+
+
+- `<figure>`：用于包含独立的、与文档内容相关的图像、图表、照片等。
+<figure>
+  <img src="/media/cc0-images/elephant-660-480.jpg" alt="Elephant at sunset" />
+  <figcaption>An elephant at sunset</figcaption>
+</figure>
+figure {
+  border: thin #c0c0c0 solid;
+  display: flex;
+  flex-flow: column;
+  padding: 5px;
+  max-width: 220px;
+  margin: auto;
+}
+
+img {
+  max-width: 220px;
+  max-height: 150px;
+}
+
+figcaption {
+  background-color: #222;
+  color: #fff;
+  font: italic smaller sans-serif;
+  padding: 3px;
+  text-align: center;
+}
+
+- `<figcaption>`：用于为 `<figure>` 元素定义标题。
+- `<time>`：用于表示日期和时间。
+- `<video>`：用于插入视频内容。
+- `<audio>`：用于插入音频内容。
+- `<canvas>`：用于绘制图形、动画等。
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "green";
+ctx.fillRect(10, 10, 150, 100);
+
+
+- `<progress>`：用于显示操作的完成进度。
+
+- `<meter>`：用于显示度量衡数据的图形。
+<label for="fuel">Fuel level:</label>
+<meter id="fuel" min="0" max="100" low="33" high="66" optimum="80" value="50">at 50/100</meter
+
+- `<datalist>`：用于定义输入字段的选项列表。
+创建一个 <input> 元素，并设置 list 属性为 <datalist> 元素的 id。例如
+<input type="text" list="fruits">
+<datalist id="fruits">
+  <option value="Apple">
+  <option value="Banana">
+  <option value="Orange">
+  <option value="Mango">
+</datalist>
+
+- `<output>`：用于显示计算结果。

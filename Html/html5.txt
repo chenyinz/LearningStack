@@ -1,0 +1,185 @@
+在html5之前 采用div来表示页面的头部、章节、页脚等，但这些div都是没有实际意义
+
+DOCTYPE和浏览器渲染模式
+不同的渲染模式会影响到浏览器对于 CSS 代码甚至 JavaScript 脚本的解析
+<meta charset="UTF-8">:
+    告诉浏览器你应该使用哪种编码来解析网页
+
+语义化标签
+header、nav、section、footer、article、aside
+其中article元素最容易跟section和div容易混淆，其实article代表一个在文档，页面或者网站中自成一体的内容
+aside在article内表示主要内容的附属信息，
+在article之外则可做侧边栏
+
+<video>:Html5提供的播放视频的标签
+    src:资源地址
+    controls:该属性定义是显示还是隐藏用户控制界面
+    
+<audio>:Html5提供的播放音频的标签
+    src:资源地址
+    controls:该属性定义是显示还是隐藏用户控制界面
+    
+<source>
+视频：
+type='video/webm; codecs="vp8, vorbis"'
+type='video/ogg; codecs="theora, vorbis"'
+type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+
+音频：
+type='audio/ogg; codecs="vorbis"'
+type='audio/aac; codecs="aac"'
+type='audio/mpeg'
+width  :视频显示区域的宽度，单位是CSS像素
+height :视频展示区域的高度，单位是CSS像素
+poster :一个海报帧的URL，用于在用户播放或者跳帧之前展示
+
+src		  :	   要嵌到页面的视频的URL
+controls  :  显示或隐藏用户控制界面
+autoplay  :  媒体是否自动播放
+loop  	  :  媒体是否循环播放
+muted  	  :  是否静音
+preload   :  该属性旨在告诉浏览器作者认为达到最佳的用户体验的方式是什么
+                none: 提示作者认为用户不需要查看该视频，服务器也想要最小化访问流量；
+                            换句话说就是提示浏览器该视频不需要缓存。
+                metadata: 提示尽管作者认为用户不需要查看该视频，
+                                不过抓取元数据（比如：长度）还是很合理的。
+                auto: 用户需要这个视频优先加载；换句话说就是提示：如果需要的话，
+                            可以下载整个视频，即使用户并不一定会用它。
+                空字符串：也就代指 auto 值
+duration    :  媒体总时间(只读)
+currentTime :  开始播放到现在所用的时间(可读写)
+muted       :  是否静音(可读写,相比于volume优先级要高)
+volume      :  0.0-1.0的音量相对值(可读写)
+paused      :  媒体是否暂停(只读)
+ended       :  媒体是否播放完毕(只读)
+error       :  媒体发生错误的时候，返回错误代码 (只读)
+currentSrc  :  以字符串的形式返回媒体地址(只读)
+	
+搭建一个性能、稳定高的网址应该具备一下内容
+1、响应式设计：根据不同设备上提供良好的用户体验
+2、性能优化：压缩和合并css和javascript文件
+3、前端框架：react、vue、next等
+4、模块化打包：webpack parcel viter
+5、SEO优化：通过优化网站的内容、结构和其他相关因素，以提高网站在搜索引擎中的排名，并增加有机（非付费）搜索流量
+6、安全性考虑：确保您的网站具有适当的安全性措施，如输入验证、防止跨站脚本攻击（XSS）和跨站请求伪造（CSRF）攻击的防护措施。
+7、测试和调试：进行全面的测试，包括单元测试、集成测试和端到端测试，以确保您的网站在不同环境和浏览器中正常工作。使用浏览器开发者工具和调试工具来识别和修复问题
+8、性能监测和优化：使用性能监测工具，如Google Analytics或Web Vitals，来收集关于网站性能的数据，并进行优化。根据数据分析结果，调整和改进网站的性能
+
+不适当的标签包裹例子 1、为不正确的案例 后者为合适的案例
+
+注意事项
+1、div本身没有特定的语义含义。为了遵循HTML的语义化原则。
+<p>、<h1>-<h6>、<strong>、<em>等本身就具有明确的语义含义
+2、嵌套规则 ul子元素只能包括li table 只能tr
+3、特定的布局、样式需求时,可能需要使用<div>来包裹某个标签。
+
+
+1、
+<div>
+  <label for="name">姓名：</label>
+  <input type="text" id="name">
+  <button type="submit">提交</button>
+</div>
+
+<form>
+  <label for="name">姓名：</label>
+  <input type="text" id="name">
+  <button type="submit">提交</button>
+</form>
+
+2、<div>
+  <h1>网页标题</h1>
+  <nav>
+    <ul>
+      <li>导航项1</li>
+      <li>导航项2</li>
+      <li>导航项3</li>
+    </ul>
+  </nav>
+</div>
+
+<header>
+  <h1>网页标题</h1>
+  <nav>
+    <ul>
+      <li>导航项1</li>
+      <li>导航项2</li>
+      <li>导航项3</li>
+    </ul>
+  </nav>
+</header>
+
+3、<div>
+  <p>版权信息</p>
+  <nav>
+    <ul>
+      <li>链接1</li>
+      <li>链接2</li>
+      <li>链接3</li>
+    </ul>
+  </nav>
+</div>
+
+<footer>
+  <p>版权信息</p>
+  <nav>
+    <ul>
+      <li>链接1</li>
+      <li>链接2</li>
+      <li>链接3</li>
+    </ul>
+  </nav>
+</footer>
+
+4、<img>标签是一个替换元素（replaced element），它的显示内容是由其src属性指定的图像来决定的，
+而不是由标签本身的内容来决定。因此，将<img>标签放在<div>中并没有实际的语义含义，也没有提供任何额外的功能。
+此外，<div>是一个块级元素，它默认具有一些样式和布局特性，例如占据一行的宽度、垂直堆叠等。
+如果将<img>标签放在<div>中，可能会导致布局上的不必要复杂性，并且可能需要额外的CSS样式来覆盖<div>的默认行
+<div>
+  <img src="image.jpg" alt="图片描述">
+  <video> <audio>类似
+</div>
+
+<img src="image.jpg" alt="图片描述">
+
+5、
+<div>
+  <ul>
+    <li>导航项1</li>
+    <li>导航项2</li>
+    <li>导航项3</li>
+  </ul>
+</div>
+
+<nav>
+  <ul>
+    <li>导航项1</li>
+    <li>导航项2</li>
+    <li>导航项3</li>
+  </ul>
+</nav>
+
+6、
+<div>
+  <h3>侧边栏标题</h3>
+  <ul>
+    <li>侧边栏项1</li>
+    <li>侧边栏项2</li>
+    <li>侧边栏项3</li>
+  </ul>
+</div>
+
+<aside>
+  <h3>侧边栏标题</h3>
+  <ul>
+    <li>侧边栏项1</li>
+    <li>侧边栏项2</li>
+    <li>侧边栏项3</li>
+  </ul>
+</aside>
+
+7、
+<p>
+  <div><strong>重要信息：</strong>这是一个强调的内容。</div>
+</p>
+

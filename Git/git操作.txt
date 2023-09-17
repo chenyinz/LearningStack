@@ -10,7 +10,7 @@ U = updated but unmerged 已更新但未融合
 
 git init 初始化仓库
 
-git add .提交仙游所有文件到本地暂存区
+git add .提交所有文件到本地暂存区
 
 git add 文件名称 单独提交文件
 
@@ -47,3 +47,11 @@ https://tsejx.github.io/devops-guidebook
 
 对于fatal: unable to access DNS 解析出现问题 清楚缓存
 ipconfig/flushdns
+
+git pull 远程获取 并与本地同步
+
+创建分支的作用
+1、并行开发:创建分支可以使成员在不干扰主线程的情况并行开发新功能或修复bug
+每个分支都是一个独立的代码副本。
+2、版本控制:创建分支可以用于管理不同的版本或发布。
+3、特性开大和测试:创建分支可以用于开发和测试新功能。
