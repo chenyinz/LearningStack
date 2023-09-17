@@ -44,3 +44,6 @@ git push
 
 git命令参考
 https://tsejx.github.io/devops-guidebook
+
+对于fatal: unable to access DNS 解析出现问题 清楚缓存
+ipconfig/flushdns
