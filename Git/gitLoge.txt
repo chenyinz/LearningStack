@@ -1,0 +1,46 @@
+'' = unmodefied 未修改
+M = modified 已修改
+A = added 已添加
+D = deleted 已删除
+R = renamed 已重命名
+C = copied 已复制
+U = updated but unmerged 已更新但未融合
+本地存储与远程存储  
+
+
+git init 初始化仓库
+
+git add .提交仙游所有文件到本地暂存区
+
+git add 文件名称 单独提交文件
+
+设置需要提交远程仓库的名称和邮箱
+git config --gloabl user.name "名称"
+git config --gloabl user.name "邮箱地址"
+
+查看名称和邮箱
+查看名称和邮箱如下
+git config user.email
+查看名称如下
+git config user.name
+
+连接远程git的地址
+git remote add origin https的git地址结尾加上有git的就是的比如https://1.git
+
+推送到远程的git
+git push --set-upstream origin master https的git地址结尾加上有git的就是的比如https
+其中--set-upstream上游分支
+
+
+但创建一个本地分支bugfix/issue123，但尚未与远程仓库同名分支关联，可以使用--set-upstream选项来设置上有分支。
+
+创建并切换到新分支
+git checkout -b bugfix/issue123
+
+git push --set-upstream origin bugfix/issue123
+
+一旦设置了上有分支，后续推送时，只需使用git push命令即可将代码推送到origin bugfix/issue123分支 无需再指定远程仓库和分支名称
+git push
+
+git命令参考
+https://tsejx.github.io/devops-guidebook
