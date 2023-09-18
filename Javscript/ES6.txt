@@ -1,0 +1,105 @@
+
+Proxy（代理）是ES6引入的一个强大的功能，它允许你创建一个代理对象，用于拦截并自定义目标对象的操作。
+这可以用于许多用例，包括数据验证、拦截对象属性访问、事件处理等。下面是一个简单的Proxy示例，用于拦截对象属性访问。
+// 创建一个目标对象
+const targetObject = {
+  name: 'Alice',
+  age: 30,
+};
+
+// 创建一个Proxy对象来拦截目标对象的操作
+const proxy = new Proxy(targetObject, {
+  // 拦截对象属性的读取操作
+  get: function (target, property) {
+    console.log(`Getting ${property}`);
+    return target[property]; // 返回目标对象的属性值
+  },
+  // 拦截对象属性的设置操作
+  set: function (target, property, value) {
+    console.log(`Setting ${property} to ${value}`);
+    target[property] = value; // 设置目标对象的属性值
+  },
+  // 拦截对象属性的删除操作
+  deleteProperty: function (target, property) {
+    console.log(`Deleting ${property}`);
+    delete target[property]; // 删除目标对象的属性
+  },
+});
+
+// 使用代理对象访问属性
+console.log(proxy.name); // 触发get拦截器，输出 "Getting name"，然后输出 "Alice"
+proxy.age = 31; // 触发set拦截器，输出 "Setting age to 31"
+console.log(proxy.age); // 触发get拦截器，输出 "Getting age"，然后输出 "31"
+delete proxy.age; // 触发deleteProperty拦截器，输出 "Deleting age"
+console.log(proxy.age); // undefined，age属性已被删除
+在上面的示例中，我们创建了一个代理对象proxy，用于拦截目标对象targetObject的属性访问、设置和删除操作。每次访问、设置或删除属性时，都会触发相应的拦截器，从而允许我们自定义操作的行为。
+
+Proxy的功能非常强大，它可以用于更复杂的用例，如数据验证、事件处理、惰性加载等。它是JavaScript中的一个重要特性，用于增强对象的控制和定制。
+
+1、let 和 const：引入了let和const关键字，用于声明块级作用域的变量。相比var，它们提供了更好的作用域控制和不可重复声明的特性。
+let x = 10;
+const PI = 3.14159;
+2、箭头函数：引入了箭头函数（Arrow Functions），它们提供了更简洁的函数定义语法，并绑定了父级作用域的this
+const add = (a, b) => a + b;
+3、模板字符串：允许在字符串中插入变量和表达式，使用反引号（``）定义。
+const name = "Alice";
+const greeting = `Hello, ${name}!`;
+4、解构赋值：允许从数组和对象中提取值并赋给变量，提高了代码的可读性。
+const [x, y] = [1, 2];
+const { firstName, lastName } = { firstName: "John", lastName: "Doe" };
+5、类：引入了类和类继承，更容易创建和维护面向对象的代码。
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  sayHello() {
+    console.log(`Hello, ${this.name}!`);
+  }
+}
+6、模块：引入了模块系统，允许将代码分割为多个独立的文件，提高了代码组织和复用性。
+// 导入模块
+import { foo } from 'bar';
+
+// 导出模块
+export function someFunction() {
+  // ...
+}
+7、Promise：引入了Promise对象，用于更好地处理异步操作和回调地狱。 用于解决异步操作过程中的嵌套问题， async是promise的简化版本
+const fetchData = () => {
+  return new Promise((resolve, reject) => {
+    // 异步操作
+    if (/* 成功 */) {
+      resolve(data);
+    } else {
+      reject(error);
+    }
+  });
+};
+
+// 创建一个Promise对象
+const fetchData = new Promise((resolve, reject) => {
+  // 模拟异步操作（例如，从服务器获取数据）
+  setTimeout(() => {
+    const data = { message: "Data loaded successfully" };
+    // 异步操作成功，调用resolve并传递结果
+    resolve(data);
+    // 异步操作失败，调用reject并传递错误信息
+    // reject(new Error("Data loading failed"));
+  }, 2000); // 模拟2秒钟的加载时间
+});
+
+// 使用Promise的then方法处理成功的情况
+fetchData.then((result) => {
+  console.log(result.message); // 输出 "Data loaded successfully"
+}).catch((error) => {
+  console.error(error.message); // 输出错误消息（如果发生错误）
+});
+
+
+8、默认参数值：允许函数参数设置默认值，简化函数调用。
+function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+9、展开运算符：引入了展开运算符（Spread Operator），用于在数组、对象等上下文中展开值。
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1, 4, 5];

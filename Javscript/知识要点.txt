@@ -1,0 +1,461 @@
+基本语法和概念：
+
+了解JavaScript的基本语法，包括变量、数据类型、操作符、条件语句和循环结构。
+掌握JavaScript的数据类型，如字符串、数字、布尔值、数组、对象和函数。
+函数和作用域：
+
+理解函数的定义和调用，包括函数表达式和箭头函数。
+学会如何创建和使用闭包，了解作用域链和作用域的概念。
+掌握函数的参数传递和返回值的处理。
+面向对象编程：
+
+学习JavaScript中的面向对象编程（OOP）原则，包括对象、类、继承、封装和多态。
+使用构造函数和原型链创建自定义对象和类。
+理解ES6中的类和继承。
+异步编程：
+
+掌握回调函数，处理异步操作，如文件读写、网络请求等。
+学习Promise和异步/await语法，以改善异步代码的可读性和可维护性。
+了解事件循环和事件驱动编程模型。
+DOM操作：
+
+学会使用JavaScript操作文档对象模型（DOM），包括选择元素、修改内容、添加和移除元素、处理事件等。
+了解事件冒泡和事件委托的概念，以提高性能。
+浏览器和API：
+
+理解浏览器对象模型（BOM），包括操作浏览器窗口、处理Cookie和LocalStorage等。
+学习使用Web API，如Fetch API、Canvas API、Geolocation API等，与浏览器进行交互。
+模块化和打包：
+
+掌握模块化编程，使用ES6模块或CommonJS规范组织代码。
+学习构建工具，如Webpack或Parcel，以管理和打包JavaScript项目。
+错误处理和调试：
+
+学会处理JavaScript错误，使用try-catch语句捕获异常。
+掌握调试技巧，使用浏览器的开发者工具或Node.js的调试器来调试代码。
+
+
+一个完整的Javascript实现有三个部分构成:ECMAScript DOM BOM 
+
+javascript特点 1、解释型语言 2、类型于C和Java的语法结构 3、动态语言 4、基于原型的面向对象
+
+解释性语言虽然不用编译 但运行较慢 采用JIT技术 使得运行速度得以改善。
+
+for if while等语句和Java基本一模一样
+
+动态语言指的是 在语言中的一切内容都是不确定的。比如一个变量，时而可以整型或者字符串。
+
+JS全都是客户端的JS,也就是说代码需要在网页中编写 写到script标签中，放在head中
+type=text/javascript src需要引入的js文件,
+
+js是严格区分大小写。
+JavaScript中一共有5种基本数据类型
+- 字符串型（String）
+– 数值型（Number）
+– 布尔型（Boolean）
+– null型（Null）
+– undefined型（Undefined）
+
+NaN即非数值是一个特殊的数值，JS中当对数值进行计算时没有结果返回，则返回NaN。
+
+将非数值转为数值 Number(任意类型)、parseInt(字符串)和parseFloat()。
+
+对于定义了变量但是未进行赋值 这个变量的值就是undefined 
+
+null空对象。 
+undefined与null区别
+undefined是由null衍生出来的 所以两者是相等的。
+
+运算符:算数运算符、位运算法、关系运算符等
+
+&&表示and  ||表示or !非运算
+
+NaN==NaN false 
+false==0 true 
+true==1 true 
+
+***********  "5"==5 true 
+
+===全等与==不同之处在 ==判断两个值时进行自动的类型转换，而===不会 也就说“5”===5 false
+
+逗号 使用逗号可以在一条语句中执行多次操作。
+var num=1,num2=2,num3=3;
+
+条件运算符  x > 0 ? x : -x
+
+{
+    代码块
+}
+if()else{
+
+}
+
+swith(语句){
+    case 表达式1:语句........
+    default:语句.....
+}
+
+while(条件表达式){
+    语句。。。。
+}
+do{}while(条件表达式)
+for(初始表达式;条件表达式;更新表达式){
+    语句....
+}
+
+对象
+第一种
+var person=new Object();
+person.name="xiaowang";
+person.age=18;
+第二种
+var person={
+    name:"xiaowang",
+    age:18
+}
+
+访问
+• 对象.属性名
+– []访问
+• 对象[‘属性名’]
+
+
+JavaScript在运行时数据是保存到栈内存和堆内存当中的。
+• 简单来说栈内存用来保存变量和基本类型。堆内存用来保存对
+象。
+• 我们在声明一个变量时实际上就是在栈内存中创建了一个空间
+用来保存变量。
+• 如果是基本类型则在栈内存中直接保存，
+• 如果是引用类型则会在堆内存中保存，变量中保存的实际上对
+象在堆内存中的地址。
+
+数组也是个对象 所以是保存在堆中 堆是个树型结构 一颗特殊的二叉树
+
+栈是一个先进后出的数据结构 push压入 pop弹出
+
+函数也是一个对象 var sum = function(a,b){return a+b}；
+
+执行环境
+    执行环境定义了变量或函数有权访问的其他数据，决定了它们各自的
+行为。
+    每个执行环境都有一个与之关联的变量对象，环境中定义的所有变量
+和函数都保存在这个对象中。
+    全局执行环境是最外围的一个执行环境。在 Web 浏览器中，全局执
+行环境被认为是 window 对象，因此所有全局变量和函数都是作为
+window 对象的属性和方法创建的。
+    某个执行环境中的所有代码执行完毕后，该环境被销毁，保存在其中
+的所有变量和函数定义也随之销毁。
+    在内部环境可以读取外部环境的变量，反之则不行。
+
+arguments 1、该对象实际上是一个数组、用于保存函数的参数。同时该对象还有一个属性callee来表示当前函数
+
+this this引用的是一个对象，this 引用会根据代码的上下文语境自动改变其引用对象。
+
+ 在最外层代码中，this 引用的是全局对象。在函数内，this 根据函数调用方式的不同而有所不同
+console.log(this === window); // 在浏览器中为 true
+
+2、函数的上下文 
+函数作为普通函数调用：当函数作为普通函数调用时，this 通常指向全局对象。
+function myFunction() {
+  console.log(this === window); // 在浏览器中为 true
+}
+myFunction();
+
+函数作为对象方法调用：当函数作为对象的方法调用时，this 指向调用该方法的对象
+var obj = {
+  name: "John",
+  greet: function() {
+    console.log("Hello, " + this.name);
+  }
+};
+obj.greet(); // 输出 "Hello, John"
+
+
+构造函数中的 this：在构造函数中，this 指向正在创建的新对象。
+function Person(name) {
+  this.name = name;
+}
+var person1 = new Person("Alice");
+console.log(person1.name); // 输出 "Alice"
+
+通过 call() 和 apply() 方法调用：可以使用 call() 和 apply() 方法来显式指定函数的 this 值。
+function greet() {
+  console.log("Hello, " + this.name);
+}
+
+var person = { name: "Bob" };
+greet.call(person); // 输出 "Hello, Bob"
+
+箭头函数：箭头函数没有自己的 this 上下文，它们继承了包含它们的外部函数的 this 值
+var obj = {
+  name: "Jane",
+  greet: () => {
+    console.log("Hello, " + this.name); // this指向外部上下文的this
+  }
+};
+obj.greet(); // 输出 "Hello, undefined"
+
+垃圾回收
+不再使用的对象的内存将会自动回收，这种功能称作垃圾回收
+
+原型继承的概念
+    jS是一门面向对象的语言，而且它还是一个基于原型的面向对象的语言。
+
+    所谓的原型实际上指的是，在构造函数中存在着一个名为原型
+的(prototype)对象，这个对象中保存着一些属性，凡是通过该
+构造函数创建的对象都可以访问存在于原型中的属性。
+    最典型的原型中的属性就是toString()函数，实际上我们的对象
+中并没有定义这个函数，但是却可以调用，那是因为这个函数
+存在于Object对应的原型中。
+
+• 除了可以通过构造函数获取原型对象以外，还可以通过具体的对象来获取原型对象
+Object.getPrototypeOf(对象)
+– 对象.__proto__
+– 对象. constructor.prototype
+• 需要注意的是，我们可以获取到Object的原型对象，也可以对它的属性进行操作，但是我们不能修改Object原型对象的引用。
+
+
+instanceof来获取对象的具体类型。
+
+• 每个函数都有两个方法call()和apply()。
+• call()和apply()都可以指定一个函数的运行
+环境对象，换句话说就是设置函数执行时
+的this值。
+• 使用方式：
+– 函数对象.call(this对象,参数数组)
+– 函数对象.apply(this对象,参数1,参数2,参数N）
+
+闭包是JS一个非常重要的特性，这意味着
+当前作用域总是能够访问外部作用域中的
+变量。因为函数是JS中唯一拥有自身作用
+域的结构，因此闭包的创建依赖于函数。
+• 也可以将闭包的特征理解为，其相关的局
+部变量在函数调用结束之后将会继续存在
+function outerFunction() {
+  var outerVar = "I am from the outer function";
+  
+  // 内部函数是一个闭包
+  function innerFunction() {
+    console.log(outerVar); // 内部函数访问了外部函数的变量
+  }
+  
+  return innerFunction; // 返回内部函数
+}
+
+// 调用外部函数，它返回了内部函数
+var closure = outerFunction();
+
+// 调用闭包，它仍然可以访问外部函数的变量
+closure(); // 输出 "I am from the outer function"
+
+
+Math对象
+Math.E 自然对数的底数，即常量 e 的值
+Math.LN10 10的自然对数
+Math.LN2 2的自然对数
+Math.LOG2E 以2为底 e 的对数
+Math.LOG10E 以10为底 e 的对数
+Math.PI π的值
+Math.SQRT1_2 1/2的平方根（即2的平方根的倒数）
+Math.SQRT2 2的平方根
+
+• 最大最小值
+– Math.max()获取最大值
+– Math.min()获取最小值
+• 舍入：
+– 向上舍 Math.ceil()
+– 向下舍 Math.floor()
+– 四舍五入 Math.round()
+• 随机数： Math.random()
+– 选取某个范围内的随机值：
+• 值 = Math.floor(Math.random() * 可能值的总数 + 第一个可能的值)
+
+可以通过Dom随时随地操作WEB页面
+ 文档
+– 文档表示的就是整个的HTML网页文档
+• 对象
+– 对象表示将网页中的每一个部分都转换为了一个对象。
+• 模型
+– 使用模型来表示对象之间的关系，这样方便我们获取对象。
+
+– 文档节点：整个HTML文档document
+– 元素节点：HTML文档中的HTML标签 document.getElementById()
+– 属性节点：元素的属性  元素节点.getAttributeNode("属性名")
+– 文本节点：HTML标签中的文本内容 元素节点.firstChild
+
+文档节点 document对象作为window对象的属性存在的，我们不用获取可以直接使用。
+
+属性节点:<a href="https://www.example.com" title="Example Website">Visit Example</a>
+// 获取 <a> 元素
+var linkElement = document.querySelector('a');
+
+// 获取 href 属性节点的值
+var hrefAttributeValue = linkElement.getAttribute('href');
+console.log(hrefAttributeValue); // 输出 "https://www.example.com"
+
+// 获取 title 属性节点的值
+var titleAttributeValue = linkElement.getAttribute('title');
+console.log(titleAttributeValue); // 输出 "Example Website"
+
+文本节点:
+<p>This is a <strong>bold</strong> text.</p>
+// 获取 <p> 元素
+var paragraphElement = document.querySelector('p');
+
+// 获取文本节点的内容
+var textContent = paragraphElement.textContent;
+console.log(textContent); // 输出 "This is a bold text."
+
+1. getElementById()
+– 通过id属性获取一个元素节点对象
+2. getElementsByTagName()
+– 通过标签名获取一组元素节点对象
+3. getElementsByName()
+– 通过name属性获取一组元素节点对象
+
+通过具体的元素节点调用
+1. getElementsByTagName()
+– 方法，返回当前节点的指定标签名后代节点
+2. childNodes
+– 属性，表示当前节点的所有子节点
+3. firstChild
+– 属性，表示当前节点的第一个子节点
+4. lastChild
+– 属性，表示当前节点的最后一个子节点
+
+parentNode
+– 属性，表示当前节点的父节点
+2. previousSibling
+– 属性，表示当前节点的前一个兄弟节点
+3. nextSibling
+– 属性，表示当前节点的后一个兄弟节
+
+事件
+事件就是与回调函数进行捆绑
+
+我们可以通过两种方式为一个元素绑定事件处理程序
+ 通过HTML元素指定事件属性来绑定
+ <button onclick="myFunction()">Click me</button>
+function myFunction() {
+  alert('Button clicked!');
+}
+
+
+  通过DOM对象指定的属性来绑定
+
+
+<button id="myButton">Click me</button>
+var button = document.getElementById('myButton');
+
+button.addEventListener('click', function() {
+  alert('Button clicked!');
+});
+
+还有一种方式比较特殊我们称为设置事件监听器。使用
+如下方式：
+– 元素对象.addEventListener()
+
+取消事件传播
+JavaScript允许取消事件传播的主要原因是为了给开发者更多的控制权，使其能够在事件流中决定事件如何传播和响应。事件传播分为两个主要阶段：事件捕获阶段（Capture Phase）和事件冒泡阶段（Bubble Phase）。取消事件传播的主要方法是使用`stopPropagation()`方法。
+
+以下是一些常见的情况，开发者可能需要取消事件传播：
+
+1. **阻止事件冒泡**：当多个嵌套元素都具有相同类型的事件处理程序时，事件通常会从最内部的元素开始，然后冒泡到外部元素。有时，你可能只想在特定元素上触发事件，而不希望它继续冒泡。通过调用`stopPropagation()`可以阻止事件在冒泡阶段传播到更外层的元素。
+
+2. **取消默认行为**：在某些情况下，浏览器会对特定的事件执行默认行为，如点击链接导航到新页面、表单提交等。你可以使用`event.preventDefault()`来取消默认行为，以便完全自定义事件的处理方式。
+
+   例如，防止链接点击后跳转到新页面：
+
+   ```javascript
+   document.querySelector('a').addEventListener('click', function(event) {
+     event.preventDefault(); // 取消默认的链接跳转行为
+     // 执行自定义的操作
+   });
+   ```
+
+3. **事件委托**：事件委托是一种将事件处理程序附加到父元素而不是每个子元素的技术。通过事件委托，你可以在父元素上捕获子元素的事件，并根据需要取消或修改事件传播。
+
+取消事件传播的能力使开发者能够更精细地控制事件处理流程，以满足特定的需求。但需要谨慎使用`stopPropagation()`，因为过度使用可能导致不可预测的行为，使得代码难以维护和调试。只有在确实需要时才应该取消事件传播。
+
+
+Bom (浏览器对象模型）
+ ECMAScript无疑是JavaScript的核心，但是要想在浏
+览器中使用JavaScript，那么BOM（浏览器对象模型）
+才是真正的核心。
+• BOM 提供了很多对象，用于访问浏览器的功能，这些
+功能与任何网页内容无关。
+• BOM将浏览器中的各个部分转换成了一个一个的对象，
+我们通过修改这些对象的属性，调用他们的方法，从而
+控制浏览器的各种行为。
+
+window对象是BOM的核心，它表示一个浏览器的实例。在浏览器中我们可以通过window对象来访问操作浏览器，同时window也是作为全局对象存在的。
+ 网页窗口的大小
+• innerWidth
+• innerHeight
+– 浏览器本身的尺寸
+• outerWidth
+• outerHeight
+
+window.open() 方法既可以导航到一个特定的 URL
+
+• 超时调用：
+– setTimeout()
+– 超过一定时间以后执行指定函数
+– 需要连个参数：
+• 要执行的内容
+• 超过的时间
+• 取消超时调用
+– clearTimeout()
+• 超时调用都是在全局作用域中执行的
+
+• 间歇调用：
+– setInterval()
+– 每隔一段时间执行指定代码
+– 需要两个参数：
+• 要执行的代码
+• 间隔的时间
+• 取消间隔调用：
+– clearInterval()
+
+系统对话框
+浏览器通过 alert() 、 confirm() 和 prompt() 
+方法可以调用系统对话框向用户显示消息。
+• 它们的外观由操作系统及（或）浏览器设置决
+定，而不是由 CSS 决定。
+• 显示系统对话框时会导致程序终止，当关闭对
+话框程序会恢复执行
+
+confirm和alert类似，只不过confirm弹出的对话
+框有一个确认和取消按钮。用户可以通过按钮来
+确认是否执行操作
+
+confirm和alert类似，只不过confirm弹出的对话
+框有一个确认和取消按钮。用户可以通过按钮来
+确认是否执行操作
+prompt('你的年龄是？','18');
+
+locations 
+location对象提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。
+
+• href属性：
+– href属性可以获取或修改当前页面的完整的URL地址，使浏览器跳转到指定页面。
+• assign() 方法
+– 所用和href一样，使浏览器跳转页面，新地址错误参数传递到assign ()方法中
+• replace()方法
+– 功能一样，只不过使用replace方法跳转地址不会体现到历史记录中。
+• reload() 方法
+– 用于强制刷新当前页面
+
+navigator对象
+• navigator 对象包含了浏览器的版本、浏览器所支持的插件、浏览器所使用的语言等各种与浏览器相关的信息。
+• 我们有时会使用navigator的userAgent属性来检查用户浏览器的版本
+
+history对象
+• history 对象保存着用户上网的历史记录，从窗口被打开的那一刻算起。
+• go()
+– 使用 go() 方法可以在用户的历史记录中任意跳
+转，可以向后也可以向前。
+• back()
+– 向后跳转
+• forward()
+– 向前跳转

@@ -1,15 +1,15 @@
 在html5之前 采用div来表示页面的头部、章节、页脚等，但这些div都是没有实际意义
 
-DOCTYPE和浏览器渲染模式
-不同的渲染模式会影响到浏览器对于 CSS 代码甚至 JavaScript 脚本的解析
-<meta charset="UTF-8">:
-    告诉浏览器你应该使用哪种编码来解析网页
-
-语义化标签
+新增了语义化标签
 header、nav、section、footer、article、aside
 其中article元素最容易跟section和div容易混淆，其实article代表一个在文档，页面或者网站中自成一体的内容
 aside在article内表示主要内容的附属信息，
 在article之外则可做侧边栏
+
+DOCTYPE和浏览器渲染模式
+不同的渲染模式会影响到浏览器对于 CSS 代码甚至 JavaScript 脚本的解析
+<meta charset="UTF-8">:
+    告诉浏览器你应该使用哪种编码来解析网页
 
 <video>:Html5提供的播放视频的标签
     src:资源地址
@@ -68,7 +68,7 @@ currentSrc  :  以字符串的形式返回媒体地址(只读)
 不适当的标签包裹例子 1、为不正确的案例 后者为合适的案例
 
 注意事项
-1、div本身没有特定的语义含义。为了遵循HTML的语义化原则。
+1、div本身没有特定的语义含义，为了遵循HTML的语义化原则。
 <p>、<h1>-<h6>、<strong>、<em>等本身就具有明确的语义含义
 2、嵌套规则 ul子元素只能包括li table 只能tr
 3、特定的布局、样式需求时,可能需要使用<div>来包裹某个标签。
