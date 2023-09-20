@@ -16,4 +16,7 @@
     1.  将应用中模块区分为依赖和源码两类，改进了开发服务器启动时间。
        - 依赖 大多为在开发时不会变动的纯 JavaScript  外部文件 javacript css等 而vite将会使用esbuild预构件依赖，比javascript编写的打包器要快10-100倍。
        - 源码 非直接js文件，需要转码例如 jsx、CSS 、sacc、vue 、tsx等。主要注意的是并未所有源码都需要同时被加载 例如 基于路由拆分的代码模块。
-    [](/asset/1.jpg)
+      - bundle based dev server
+        [](/asset/1.jpg)
+      - Native ESM based dev server
+        [](/asset/2.jpg)
