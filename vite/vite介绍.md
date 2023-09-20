@@ -2,22 +2,25 @@
 
 ## 1、vite 解决了什么问题
 
-    - 对于大型项目来说 javacript代码量往往较大、上千个模块。这时的工具会有性能瓶颈，需要一段时间才能启动live sever功能，即使使用的热模块替换。
-    - 而vite即解决上述问题。
-    - 所采用的的技术
-    1.  将应用中模块区分为依赖和源码两类，改进了开发服务器启动时间。
-       - 依赖 大多为在开发时不会变动的纯 JavaScript  外部文件 javacript css等 而vite将会使用esbuild预构件依赖，比javascript编写的打包器要快10-100倍。
-       - 源码 非直接js文件，需要转码例如 jsx、CSS 、sacc、vue 、tsx等。主要注意的是并未所有源码都需要同时被加载 例如 基于路由拆分的代码模块。
-       - bundle based dev server
-        [](/asset/1.jpg)
-       - Native ESM based dev server
-        [](/asset/2.jpg)
+1.  将应用中模块区分为依赖和源码两类，改进了开发服务器启动时间。
 
-       - Server ready是开发服务器
-    2. HMR vite只需要精确地使已编辑的模块与其最近的HMR边界之间的链失活
+    - 对于大型项目来说 javacript 代码量往往较大、上千个模块。这时的工具会有性能瓶颈，需要一段时间才能启动 live sever 功能，即使使用的热模块替换。
+    - 而 vite 即解决上述问题。
+    - 所采用的的技术
+
+    - 依赖 大多为在开发时不会变动的纯 JavaScript 外部文件 javacript css 等 而 vite 将会使用 esbuild 预构件依赖，比 javascript 编写的打包器要快 10-100 倍。
+    - 源码 非直接 js 文件，需要转码例如 jsx、CSS 、sacc、vue 、tsx 等。主要注意的是并未所有源码都需要同时被加载 例如 基于路由拆分的代码模块。
+    - bundle based dev server
+      [](/asset/1.jpg)
+    - Native ESM based dev server
+      [](/asset/2.jpg)
+
+      - Server ready 是开发服务器
+
+    2. HMR vite 只需要精确地使已编辑的模块与其最近的 HMR 边界之间的链失活
     3. Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览器为我们做更多事情）：源码模块的请求会根据 304 Not Modified 进行协商缓存，而依赖模块请求则会通过 Cache-Control: max-age=31536000,immutable 进行强缓存，因此一旦被缓存它们将不需要再次请求。
-    4. 生产环境为何仍需打包，因在开发的时候，浏览器支持原生的ES模块，实现按需编译和快速热更新，但在生产环境中，需要将所有模块打包成一个或多个最终输出文件，因为浏览器并不支持模块的嵌套导入，需要将魔铠打包成浏览器可以理解的格式。优化和压缩。资源管理和版本控制。代码进行tree-staking、懒加载、chunk分割。
-    5. 为何不用ESBuild打包。 不兼容，因为vite采用的是Rollup灵活的插件API
+    4. 生产环境为何仍需打包，因在开发的时候，浏览器支持原生的 ES 模块，实现按需编译和快速热更新，但在生产环境中，需要将所有模块打包成一个或多个最终输出文件，因为浏览器并不支持模块的嵌套导入，需要将魔铠打包成浏览器可以理解的格式。优化和压缩。资源管理和版本控制。代码进行 tree-staking、懒加载、chunk 分割。
+    5. 为何不用 ESBuild 打包。 不兼容，因为 vite 采用的是 Rollup 灵活的插件 API
 
 ### 2、如何使用 Vite
 
@@ -110,3 +113,12 @@
     ```
     npm add vite 添加vite
     ```
+
+# vite 会全权交给 rollup 库去完成生产环境的打包
+
+    Rollup 负责将应用程序的模块打包成静态资源文件，以供生产环境使用。这样可以确保在生产环境中获得优化的静态资源文件，
+    以提高应用程序的性能和加载速度。
+
+    commonjs 规范的导出 module.exports
+    有的包以common.js的规范打包  vite应如何处理
+    1. 依赖
