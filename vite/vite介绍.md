@@ -12,6 +12,8 @@
         [](/asset/1.jpg)
        - Native ESM based dev server
         [](/asset/2.jpg)
+
+       - Server ready是开发服务器
     2. HMR vite只需要精确地使已编辑的模块与其最近的HMR边界之间的链失活
     3. Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览器为我们做更多事情）：源码模块的请求会根据 304 Not Modified 进行协商缓存，而依赖模块请求则会通过 Cache-Control: max-age=31536000,immutable 进行强缓存，因此一旦被缓存它们将不需要再次请求。
     4. 生产环境为何仍需打包，因在开发的时候，浏览器支持原生的ES模块，实现按需编译和快速热更新，但在生产环境中，需要将所有模块打包成一个或多个最终输出文件，因为浏览器并不支持模块的嵌套导入，需要将魔铠打包成浏览器可以理解的格式。优化和压缩。资源管理和版本控制。代码进行tree-staking、懒加载、chunk分割。
@@ -66,7 +68,7 @@
         1. 开发服务器：跨越的问题，react-cli create-react-element vue-cli 解决跨域问题
         - 在前端开发过程中，跨域问题是一个常见的挑战。跨域是指在浏览器中，当一个网页的 JavaScript 代码试图访问与当前页面不同域名、协议或端口的资源时，浏览器会阻止这种跨域请求。这是出于安全考虑，以防止恶意网站获取用户的敏感信息或进行其他攻击。
 
-以下是一些常见的跨域解决方法：
+## 以下是一些常见的跨域解决方法：
 
         1. JSONP（JSON with Padding）：JSONP 是一种通过动态创建 `<script>` 标签来实现跨域请求的方法。服务器返回的数据包裹在一个函数调用中，前端通过指定回调函数的方式获取数据。JSONP 只支持 GET 请求，且需要服务器端的支持。
 
@@ -90,3 +92,18 @@
         const loadsh=webpack_require("loadsh")
         const vue=webpack_require("vue")
         ```
+       3. 需要注意的点是:webpack等构建工具是用在本地开发环境中，然后将构建后的文件放至服务端上，然后从浏览器从服务端或者静态文件服务器上下载和执行。
+       4. vite是基于es modules的 webpack支持多种模块化开发，需要将所有依赖全部读取一遍。
+       5. vite 关注浏览器端 webpack关注于兼容性。
+    # vite 脚手架
+
+    ```
+    yarn create vite
+    ```
+
+    1. 全局安装 create-vite (vite 脚手架)
+    2. 直接运行这个 create-vite bin 目录下的一个执行配置
+
+    create-vite 与 vite 之间的关系 create-vite 内置了 vite 与 vue-cli 会内置 webpack
+
+    -
