@@ -106,4 +106,7 @@
 
     create-vite 与 vite 之间的关系 create-vite 内置了 vite 与 vue-cli 会内置 webpack
 
-    -
+
+    ```
+    npm add vite 添加vite
+    ```
