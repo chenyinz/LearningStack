@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算机应用程序</title>
+</head>
+
+<body>
+    <h1>计算机应用程序</h1>
+    <!-- readonly 表示input内容输入不能由用户输入确定 -->
+    <input type="text" id="display" readonly>
+    <br>
+    <!-- 其中button按钮的type有submit、reset重置按钮 -->
+    <!-- disabled 则禁止按钮、使其无法点击 -->
+    <!-- name：指定按钮的名称，用于在表单提交时标识该按钮。 -->
+    <!-- value：指定按钮的值，通常与表单一起提交，用于标识按钮的操作。 -->
+    <!-- 这个name值是作为key 将和数据一起发送给服务器 -->
+    <!-- autofocus：如果设置为 true，按钮将自动获得焦点，即页面加载后将自动聚焦在按钮上 -->
+
+    <button onclick="appendToDisplay('1')">1</button>
+    <button onclick="appendToDisplay('2')">2</button>
+    <button onclick="appendToDisplay('3')">3</button>
+    <button onclick="appendToDisplay('+')">+</button>
+    <br>
+    <button onclick="appendToDisplay('4')">4</button>
+    <button onclick="appendToDisplay('5')">5</button>
+    <button onclick="appendToDisplay('6')">6</button>
+    <button onclick="appendToDisplay('-')">-</button>
+    <br>
+    <button onclick="appendToDisplay('7')">7</button>
+    <button onclick="appendToDisplay('8')">8</button>
+    <button onclick="appendToDisplay('9')">9</button>
+    <button onclick="appendToDisplay('*')">*</button>
+    <br>
+    <button onclick="appendToDisplay('0')">0</button>
+    <button onclick="clearDisplay()">C</button>
+    <button onclick="calculateResult()">=</button>
+    <button onclick="appendToDisplay('/')">/</button>
+    <br>
+    <script>
+        function appendToDisplay(value) {
+            const display = document.getElementById('display');
+            display.value += value;
+            console.log(display.value);
+        }
+        function clearDisplay() {
+            const display = document.getElementById("display");
+            display.value = "";
+        }
+        function calculateResult() {
+            const display = document.getElementById("display");
+            const expression = display.value;
+            try {
+                //eval 可以将接受一个string类型的数据把它当做js代码运行
+                const result = eval(expression);
+                display.value = result;
+            } catch (error) {
+                display.value = "Error";
+            }
+        }
+    </script>
+</body>
+
+</html>

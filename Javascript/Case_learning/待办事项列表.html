@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>待办事项列表</title>
+</head>
+<!-- 需求制作一个待办事项列表，用户可以添加、删除和标记已完成的任务。待办事项列表 -->
+
+<!-- 行内元素 -->
+<!-- 
+<a>：用于创建超链接，链接到其他网页或资源。
+<span>：通常用于内联元素的容器，用于应用样式或操作元素。
+<strong>：表示文本的强调，通常呈现为粗体字。
+<em>：表示文本的强调，通常呈现为斜体字。
+<abbr>：用于标记缩写或首字母缩写。
+<code>：用于表示计算机代码，通常以等宽字体显示。
+<time>：用于表示日期和时间。
+<br>：用于创建换行符，它是一个空元素，不需要闭合标签。
+<img>：用于嵌入图像，通常在文本中显示。
+<input>：用于创建各种输入字段，如文本框、单选按钮、复选框等。
+<button>：用于创建按钮，通常用于触发交互操作。
+<label>：用于关联表单元素和其标签文本。
+ -->
+
+<!-- 该案例需要了解一下函数的上下文 -->
+<!-- 1. 全局上下文,如果函数在全局作用域中定义并调用,它的上下文就是全局上下文。在这种情况下,this 指的就是window
+2. 函数的上下文,指的是函数被执行时所处的环境或作用域,能够被访问到的内部变量或者对象。
+3. 构造函数上下文，
+4. 事件处理程序上下文:当函数作为事件处理程序被调用时,它的上下文是触发事件的DOM元素。在这种情况下,this通常指向该DOM元素。
+例如下面的button标签中的this 即是按钮元素。 -->
+
+<body>
+    <div class="container">
+        <h1>待办事项列表</h1>
+        <input type="text" id="taskInput" placeholder="添加新任务">
+        <button onclick="addTask()">添加</button>
+        <ul id="taskList"></ul>
+    </div>
+    <script>
+        //获取页面信息      
+        const taskInput = document.getElementById("taskInput")
+        const taskList = document.getElementById("taskList");
+        //添加任务
+        function addTask() {
+            const tastText = taskInput.value.trim();
+            if (tastText != "") {
+                const li = document.createElement("li");
+                li.innerHTML = `
+                <span>${tastText}</span>
+                <button onclick="completeTask(this)">完成</button>
+                <button onclick="deleteTask(this)">删除</button>
+                `;
+                taskList.appendChild(li);
+                taskInput.value = "";
+            }
+        }
+        //parentElement 获取该节点的父节点
+        // classList获取我们表中的类 toggle是切换模式 有即删 删即添加
+        // 完成任务
+        function completeTask(button) {
+            const taskItem = button.parentElement;
+            taskItem.classList.toggle("completed")
+        }
+        // 删除任务
+        function deleteTask(button) {
+            const taskItem = button.parentElement;
+            const deleteNode = taskList.removeChild(taskItem);
+            console.log(deleteNode);
+        }
+        // 在输入框按回撤键时添加任务
+        // addeventListener是javascript中用于给DOM元素添加事件监听器的方法，能够指定要监听的事件类型如点击、鼠标移动等、以及当事件发生时要执行的函数。
+        // 事件类别click、mouseenter、mouseleave、keydown、keyup、submit、focus、blur、
+        // evnet表示事件对象
+        taskInput.addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                addTask();
+            }
+        })
+    </script>
+</body>
+
+</html>
