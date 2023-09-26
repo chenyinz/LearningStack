@@ -75,11 +75,21 @@
         // addeventListener是javascript中用于给DOM元素添加事件监听器的方法，能够指定要监听的事件类型如点击、鼠标移动等、以及当事件发生时要执行的函数。
         // 事件类别click、mouseenter、mouseleave、keydown、keyup、submit、focus、blur、
         // evnet表示事件对象
+        // 存在一个需要注意的点 比如说listener是一个当所监听的事件类型触发时，会接受到一个事件通知（实现了Event接口对象）对象。
+        // listener必须是一个实现了EventListener接口的对象或者是一个函数。
         taskInput.addEventListener("keyup", function (event) {
             if (event.key === "Enter") {
                 addTask();
+                console.log(event.target)
+                console.log(event.currentTarget)
             }
         })
+        // event.type：表示事件的类型，例如 "click"、"keydown" 等。
+        // event.target：表示触发事件的元素，即事件的目标元素。
+        // event.currentTarget：表示当前正在处理事件的元素，即事件的当前目标元素。
+        // event.preventDefault()：阻止事件的默认行为，例如阻止链接的跳转或表单的提交。
+        // event.stopPropagation()：停止事件在 DOM 树中的传播，阻止事件冒泡。
+        // event.stopImmediatePropagation()：立即停止事件的传播，并阻止调用后续的事件处理程序。
     </script>
 </body>
 
