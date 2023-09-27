@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- Flatpickr时间插件 https://github.com/flatpickr/flatpickr -->
+<!-- 倒计时插件 https://countdownjs.org/ -->
+
+<body>
+    <div id="countdown">
+        <input type="time" id="inputContent">
+        <div>
+            <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">60</span>
+            <button onclick="startTime()">设置完毕</button>
+            <button onclick="updateTime()">开始倒计时</button>
+        </div>
+    </div>
+    <script>
+        const inputContent = document.getElementById("inputContent");
+        const hours = document.getElementById("hours");
+        const minutes = document.getElementById("minutes");
+        const seconds = document.getElementById("seconds");
+        function startTime() {
+            const timeParts = inputContent.value.split(":");
+            hours.textContent = timeParts[0];
+            minutes.textContent = timeParts[1];
+            console.log(minutes)
+            //将时间转换为毫秒来计算
+            // time.getTime()毫秒 time.valueof()返回一个日期对象原始值然后相加
+        }
+
+        function updateTime() {
+            const timePartsT = inputContent.value.split(":");
+            const hour1 = timePartsT[0];
+            const minute1 = timePartsT[1];
+            const result = Date.now() + 60 * 1000;
+            const currentTime = Date.now();
+            const timeRemaining = result - currentTime;
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            // 更新页面上的倒计时
+            document.getElementById('hours').textContent = (hours < 10 ? '0' : '') + hours;
+            document.getElementById('minutes').textContent = (minutes < 10 ? '0' : '') + minutes;
+        }
+
+    </script>
+</body>
+
+</html>

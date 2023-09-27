@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>数据可视化平台</title>
+</head>
+
+<body>
+    <h1>柱状图示例</h1>
+
+    <div id="chart">
+    </div>
+    <script>
+        // 数据
+        data = [1, 2, 3, 4];
+        d3.select("#chart")         // select the view
+            .selectAll("p")         // empty <p> selections to be used later
+            .data(data)             // parses data, and runs below operations n times
+            .enter()            // creates new data-bound element
+            .append("p")            // append <p> tag for each datum
+            .text("I'm no. 1");
+    </script>
+    <!-- shu -->
+</body>
+<!-- d3.select("#chart")
+.append("svg")
+.attr("width", 100)
+.attr("height", 50)
+.style("background", "red -->
+
+</html>
+<!-- D3中的数据绑定 近似与将数据与元素做了绑定-->

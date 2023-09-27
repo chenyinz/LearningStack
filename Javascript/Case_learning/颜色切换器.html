@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>颜色切换器</title>
+</head>
+
+<body>
+    <div id="container">
+        <button id="changeColorButton">切换颜色</button>
+    </div>
+    <script>
+        const container = document.getElementById("container");
+        const button = document.getElementById("changeColorButton");
+        //定义颜色
+        const colors = ["#ff5733", "#33ff57", "#5733ff", "#ff33f9", "#33f9ff"];
+        button.addEventListener("click", () => {
+            //随机选择一个颜色
+            const random = colors[Math.floor(Math.random() * colors.length)]
+            container.style.backgroundColor = random;
+        })
+    </script>
+</body>
+
+</html>

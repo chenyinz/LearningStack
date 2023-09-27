@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="searchInput" placeholder="输入关键词">
+    <div id="searchResults"></div>
+
+</body>
+<script>
+    const data = [
+        { id: 1, name: "苹果" },
+        { id: 2, name: "香蕉" },
+        { id: 3, name: "橙子" },
+        { id: 4, name: "葡萄" },
+        // 添加更多数据...
+    ];
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.getElementById("searchResults");
+
+    // 监听输入事件
+    searchInput.addEventListener("input", function () {
+        const searchText = searchInput.value.toLowerCase(); // 获取用户输入并转换为小写
+
+        // 过滤数据
+        const filteredData = data.filter(item =>
+            item.name.toLowerCase().includes(searchText)
+        );
+
+        // 清空搜索结果容器
+        searchResults.innerHTML = "";
+
+        // 如果有匹配的结果，将它们添加到结果容器中
+        if (filteredData.length > 0) {
+            filteredData.forEach(item => {
+                const resultItem = document.createElement("div");
+                resultItem.textContent = item.name;
+                searchResults.appendChild(resultItem);
+            });
+        } else {
+            // 如果没有匹配的结果，显示没有找到结果的消息
+            const noResultsMessage = document.createElement("div");
+            noResultsMessage.textContent = "没有找到结果";
+            searchResults.appendChild(noResultsMessage);
+        }
+    });
+
+</script>
+
+</html>

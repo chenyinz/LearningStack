@@ -29,7 +29,7 @@
 
 10. 浏览器弹窗阻止： BOM 允许你检测和处理浏览器弹窗阻止器的行为，以确保你的弹窗正常工作。 - 使用现代的弹窗库： 一些现代的弹窗库，如 SweetAlert、Modal 等
     ```js
-    // 使用 SweetAlert 库
+    // 使用 SweetAlert库
     Swal.fire({
       title: "自定义标题",
       text: "自定义文本内容",

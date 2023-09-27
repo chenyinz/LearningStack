@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="./style1.css" type="text/css">
+</head>
+
+<body>
+    <!-- 添加多张照片 -->
+    <div class="container">
+        <div class="slide fade ">
+            <img src="./assets/0.jpg" alt="图片1">
+        </div>
+    </div>
+    <button class="prev" onclick="changeSlide(-1)">后退</button>
+    <button class="next" onclick="changeSlide(1)">前进</button>
+    <!-- 在一个内容器中切换图片的轮播图 -->
+    <!-- <script>
+        let imageIndexStatus = 0;
+        function changeSlide(status) {
+            const imageIndex = document.querySelector('img')
+            if (imageIndexStatus + status >= 4) {
+                imageIndexStatus = 0;
+                imageIndex.setAttribute("src", `./assets/${imageIndexStatus}.jpg`)
+            } else if (imageIndexStatus + status < 0) {
+                imageIndexStatus = 3;
+                imageIndex.setAttribute("src", `./assets/${imageIndexStatus}.jpg`)
+            } else {
+                imageIndexStatus += status;
+                imageIndex.setAttribute("src", `./assets/${imageIndexStatus}.jpg`)
+            }
+        }
+    </script> -->
+    <!-- 在一个容器中有好几张图片的轮播图 -->
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!-- ## 时钟：创建一个实时时钟，显示当前时间，并能够更新每秒。 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时钟Javascript应用</title>
+</head>
+
+<body>
+    <div id="clock"></div>
+    <script>
+        function updateClock() {
+            const colockElement = document.getElementById("clock");
+            const time = new Date();
+            const hour = time.getHours().toString().padStart(2, "0");
+            const minute = time.getMinutes().toString().padStart(2, '0');
+            const second = time.getSeconds().toString().padStart(2, '0');
+            const timeString = `${hour}:${minute}:${second}`
+            colockElement.textContent = timeString;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+
+</html>

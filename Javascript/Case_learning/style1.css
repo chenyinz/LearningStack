@@ -1,0 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* display: none; */
+
+img {
+  width: 100%;
+  height: 700%;
+}
+/* 共同的样式一起设定 不同的再分开处理 */
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
