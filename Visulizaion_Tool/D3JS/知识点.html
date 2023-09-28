@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>D3.js Bar Chart with Axis Example</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+    <!-- <p>张三</p>
+    <p>张五</p> -->
+</body>
+<script>
+    //var str = ["CHINA"];
+    //var a = d3.select("body").selectAll("p").data(str).text(function (d, i) { return i + ":" + d; });
+    //a.style("color", "blue").style("font-Size", "73px")
+    //var body = d3.select("body").insert("p", "#label").text("赵六");
+    //var p = d3.select("#label");
+    //p.remove();
+
+    //case1
+    //var p = d3.select("body").selectAll("p").data(str).text(function (d, i) { return d })
+
+    //case2
+    //var p = d3.select("body").selectAll("p").data(str).enter().append("p").text(function (d, i) { return d })
+
+    //case3
+    // d3.select("body").selectAll("p").data(str).text(function (d) { return d; }).exit().remove()
+
+    //case4
+    //var width = 300;
+    //var height = 300;
+    // 此时已有画布内容
+    //var svg = d3.select("body").append("svg").attr("height", height).attr("width", width);
+    //绘制矩形
+    // var arr = [21, 17, 16, 11, 10];
+
+    // var rectHeight = 25;//每个矩形的高度
+    //svg.selectAll("rect").data(arr).enter().append("rect").attr('x', 20).attr('y', function (d, i) { return i * rectHeight })
+    // .attr('width', function (d, i) { return d * 10 }).attr("height", rectHeight - 5).attr("fill", "gold");
+    //var arr = [21, 17, 16, 11, 10];
+    //var max = d3.max(arr);
+    //var linear = d3.scaleLinear().domain([0, max]).range([0, 300]) //此时的返回值可以当做函数来使用。
+
+    // x坐标轴绘制
+
+
+    //y坐标轴绘制
+    //var width = 400, height = 400;
+    //var data = [10, 15, 20, 25, 30];
+    //var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+    //var scale = d3.scaleLinear().domain([d3.min(data), d3.max(data)]).range([height / 2, 0]);
+    //var y_axis = d3.axisLeft().scale(scale);
+    //svg.append("g").attr("transform", "translate(50, 10)").call(y_axis);
+
+    //同时包含想x,y坐标轴
+    var width = 500, height = 500;
+    var data = [10, 15, 20, 25, 30];
+    var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+    var xscale = d3.scaleLinear().domain([0, d3.max(data)]).range([0, width - 100]);
+    var yscale = d3.scaleLinear().domain([0, d3.max(data)]).range([height / 2, 0]);
+    var x_axis = d3.axisBottom().scale(xscale);
+    var y_axis = d3.axisLeft().scale(yscale);
+    svg.append("g").attr("transform", "translate(50,10)").call(y_axis);
+    var xAxisTranslate = height / 2 + 10;
+    svg.append("g").attr("transform", "translate(50," + xAxisTranslate + ")").call(x_axis);
+</script>
+
+</html>
