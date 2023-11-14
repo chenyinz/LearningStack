@@ -19,3 +19,4 @@ function sayHi(name) {
   return `How are you, ${name}?`;
 }
 //永用不要使用eval()，该方法有太多漏洞。
+//不要使用不必要的转义字符
